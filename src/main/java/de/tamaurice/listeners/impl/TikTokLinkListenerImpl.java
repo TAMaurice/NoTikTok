@@ -19,6 +19,8 @@ public class TikTokLinkListenerImpl implements TikTokLinkListener {
             System.out.println("found a tiktok link");
             Message message = event.getMessage();
             message.reply("<@" + event.getMessageAuthor().getId() + "> just posted a TikTok Link! That's a no-go >:(");
+            
+            // I added this try-catch, because the bot might be so fast and delete the message before it can reply. So this is an intentional slow-down to prevent that.
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
